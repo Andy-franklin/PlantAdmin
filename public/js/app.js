@@ -5213,6 +5213,16 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
@@ -39445,100 +39455,126 @@ var render = function() {
                 ]
               ),
               _vm._v(" "),
-              _c("div", { staticClass: "mb-3" }, [
-                _c(
-                  "label",
-                  { staticClass: "form-label", attrs: { for: "nameInput" } },
-                  [_vm._v("Name")]
-                ),
-                _vm._v(" "),
-                _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.form.name,
-                      expression: "form.name"
-                    }
-                  ],
-                  staticClass: "form-control",
-                  attrs: {
-                    type: "text",
-                    id: "nameInput",
-                    "aria-describedby": "nameHelp"
-                  },
-                  domProps: { value: _vm.form.name },
-                  on: {
-                    input: function($event) {
-                      if ($event.target.composing) {
-                        return
-                      }
-                      _vm.$set(_vm.form, "name", $event.target.value)
-                    }
-                  }
-                }),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  { staticClass: "form-text", attrs: { id: "nameHelp" } },
-                  [_vm._v("A friendly name for this plant.")]
-                )
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "mb-3" }, [
-                _c(
-                  "label",
-                  { staticClass: "form-label", attrs: { for: "status" } },
-                  [_vm._v("Status")]
-                ),
-                _vm._v(" "),
-                _c(
-                  "select",
-                  {
+              _c(
+                "div",
+                { staticClass: "mb-3" },
+                [
+                  _c(
+                    "label",
+                    { staticClass: "form-label", attrs: { for: "nameInput" } },
+                    [_vm._v("Name")]
+                  ),
+                  _vm._v(" "),
+                  _vm._l(_vm.error.form.name, function(message) {
+                    return _c(
+                      "span",
+                      { staticClass: "text-danger form-text float-end" },
+                      [_vm._v(_vm._s(message))]
+                    )
+                  }),
+                  _vm._v(" "),
+                  _c("input", {
                     directives: [
                       {
                         name: "model",
                         rawName: "v-model",
-                        value: _vm.form.status_id,
-                        expression: "form.status_id"
+                        value: _vm.form.name,
+                        expression: "form.name"
                       }
                     ],
-                    staticClass: "form-select",
-                    attrs: { id: "status", "aria-label": "select example" },
+                    staticClass: "form-control",
+                    attrs: {
+                      type: "text",
+                      id: "nameInput",
+                      "aria-describedby": "nameHelp"
+                    },
+                    domProps: { value: _vm.form.name },
                     on: {
-                      change: function($event) {
-                        var $$selectedVal = Array.prototype.filter
-                          .call($event.target.options, function(o) {
-                            return o.selected
-                          })
-                          .map(function(o) {
-                            var val = "_value" in o ? o._value : o.value
-                            return val
-                          })
-                        _vm.$set(
-                          _vm.form,
-                          "status_id",
-                          $event.target.multiple
-                            ? $$selectedVal
-                            : $$selectedVal[0]
-                        )
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(_vm.form, "name", $event.target.value)
                       }
                     }
-                  },
-                  _vm._l(_vm.formOptions.statuses, function(status, index) {
-                    return _c("option", { domProps: { value: index } }, [
-                      _vm._v(_vm._s(status))
-                    ])
                   }),
-                  0
-                ),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  { staticClass: "form-text", attrs: { id: "statusHelp" } },
-                  [_vm._v("What is the current status of the plant?")]
-                )
-              ]),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    { staticClass: "form-text", attrs: { id: "nameHelp" } },
+                    [_vm._v("A friendly name for this plant.")]
+                  )
+                ],
+                2
+              ),
+              _vm._v(" "),
+              _c(
+                "div",
+                { staticClass: "mb-3" },
+                [
+                  _c(
+                    "label",
+                    { staticClass: "form-label", attrs: { for: "status" } },
+                    [_vm._v("Status")]
+                  ),
+                  _vm._v(" "),
+                  _vm._l(_vm.error.form.status_id, function(message) {
+                    return _c(
+                      "span",
+                      { staticClass: "text-danger form-text float-end" },
+                      [_vm._v(_vm._s(message))]
+                    )
+                  }),
+                  _vm._v(" "),
+                  _c(
+                    "select",
+                    {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.form.status_id,
+                          expression: "form.status_id"
+                        }
+                      ],
+                      staticClass: "form-select",
+                      attrs: { id: "status", "aria-label": "select example" },
+                      on: {
+                        change: function($event) {
+                          var $$selectedVal = Array.prototype.filter
+                            .call($event.target.options, function(o) {
+                              return o.selected
+                            })
+                            .map(function(o) {
+                              var val = "_value" in o ? o._value : o.value
+                              return val
+                            })
+                          _vm.$set(
+                            _vm.form,
+                            "status_id",
+                            $event.target.multiple
+                              ? $$selectedVal
+                              : $$selectedVal[0]
+                          )
+                        }
+                      }
+                    },
+                    _vm._l(_vm.formOptions.statuses, function(status, index) {
+                      return _c("option", { domProps: { value: index } }, [
+                        _vm._v(_vm._s(status))
+                      ])
+                    }),
+                    0
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    { staticClass: "form-text", attrs: { id: "statusHelp" } },
+                    [_vm._v("What is the current status of the plant?")]
+                  )
+                ],
+                2
+              ),
               _vm._v(" "),
               _c(
                 "div",
@@ -39566,6 +39602,14 @@ var render = function() {
                     },
                     [_vm._v("Pot Size")]
                   ),
+                  _vm._v(" "),
+                  _vm._l(_vm.error.form.pot_size, function(message) {
+                    return _c(
+                      "span",
+                      { staticClass: "text-danger form-text float-end" },
+                      [_vm._v(_vm._s(message))]
+                    )
+                  }),
                   _vm._v(" "),
                   _c("input", {
                     directives: [
@@ -39598,48 +39642,62 @@ var render = function() {
                     { staticClass: "form-text", attrs: { id: "potSizeHelp" } },
                     [_vm._v("How big is that pot in inches?")]
                   )
-                ]
+                ],
+                2
               ),
               _vm._v(" "),
-              _c("div", { staticClass: "mb-3" }, [
-                _c(
-                  "label",
-                  { staticClass: "form-label", attrs: { for: "quantity" } },
-                  [_vm._v("Quantity")]
-                ),
-                _vm._v(" "),
-                _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.form.quantity,
-                      expression: "form.quantity"
-                    }
-                  ],
-                  staticClass: "form-control",
-                  attrs: {
-                    type: "number",
-                    id: "quantity",
-                    "aria-describedby": "quantityHelp"
-                  },
-                  domProps: { value: _vm.form.quantity },
-                  on: {
-                    input: function($event) {
-                      if ($event.target.composing) {
-                        return
+              _c(
+                "div",
+                { staticClass: "mb-3" },
+                [
+                  _c(
+                    "label",
+                    { staticClass: "form-label", attrs: { for: "quantity" } },
+                    [_vm._v("Quantity")]
+                  ),
+                  _vm._v(" "),
+                  _vm._l(_vm.error.form.quantity, function(message) {
+                    return _c(
+                      "span",
+                      { staticClass: "text-danger form-text float-end" },
+                      [_vm._v(_vm._s(message))]
+                    )
+                  }),
+                  _vm._v(" "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.form.quantity,
+                        expression: "form.quantity"
                       }
-                      _vm.$set(_vm.form, "quantity", $event.target.value)
+                    ],
+                    staticClass: "form-control",
+                    attrs: {
+                      type: "number",
+                      id: "quantity",
+                      "aria-describedby": "quantityHelp"
+                    },
+                    domProps: { value: _vm.form.quantity },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(_vm.form, "quantity", $event.target.value)
+                      }
                     }
-                  }
-                }),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  { staticClass: "form-text", attrs: { id: "quantityHelp" } },
-                  [_vm._v("How many do you have? (How many is too many?)")]
-                )
-              ]),
+                  }),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    { staticClass: "form-text", attrs: { id: "quantityHelp" } },
+                    [_vm._v("How many do you have? (How many is too many?)")]
+                  )
+                ],
+                2
+              ),
               _vm._v(" "),
               _c("hr"),
               _vm._v(" "),
@@ -39808,407 +39866,508 @@ var render = function() {
                     )
                   ]),
                   _vm._v(" "),
-                  _c("div", { staticClass: "mb-3" }, [
-                    _c(
-                      "label",
-                      {
-                        staticClass: "form-label",
-                        attrs: { for: "filialGeneration" }
-                      },
-                      [_vm._v("Filial Generation")]
-                    ),
-                    _vm._v(" "),
-                    _c("input", {
-                      directives: [
+                  _c(
+                    "div",
+                    { staticClass: "mb-3" },
+                    [
+                      _c(
+                        "label",
                         {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.form.filial_generation,
-                          expression: "form.filial_generation"
-                        }
-                      ],
-                      staticClass: "form-control",
-                      attrs: { type: "number", id: "filialGeneration" },
-                      domProps: { value: _vm.form.filial_generation },
-                      on: {
-                        input: function($event) {
-                          if ($event.target.composing) {
-                            return
+                          staticClass: "form-label",
+                          attrs: { for: "filialGeneration" }
+                        },
+                        [_vm._v("Filial Generation")]
+                      ),
+                      _vm._v(" "),
+                      _vm._l(_vm.error.form.filial_generation, function(
+                        message
+                      ) {
+                        return _c(
+                          "span",
+                          { staticClass: "text-danger form-text float-end" },
+                          [_vm._v(_vm._s(message))]
+                        )
+                      }),
+                      _vm._v(" "),
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.form.filial_generation,
+                            expression: "form.filial_generation"
                           }
-                          _vm.$set(
-                            _vm.form,
-                            "filial_generation",
-                            $event.target.value
-                          )
+                        ],
+                        staticClass: "form-control",
+                        attrs: { type: "number", id: "filialGeneration" },
+                        domProps: { value: _vm.form.filial_generation },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(
+                              _vm.form,
+                              "filial_generation",
+                              $event.target.value
+                            )
+                          }
                         }
-                      }
-                    }),
-                    _vm._v(" "),
-                    _c(
-                      "div",
-                      {
-                        staticClass: "form-text",
-                        attrs: { id: "filialGenerationHelp" }
-                      },
-                      [_vm._v("Which generation is this plant?")]
-                    )
-                  ]),
+                      }),
+                      _vm._v(" "),
+                      _c(
+                        "div",
+                        {
+                          staticClass: "form-text",
+                          attrs: { id: "filialGenerationHelp" }
+                        },
+                        [_vm._v("Which generation is this plant?")]
+                      )
+                    ],
+                    2
+                  ),
                   _vm._v(" "),
                   _vm.form.crossBreedingInfo === "newCross"
                     ? _c("div", { staticClass: "new-cross" }, [
-                        _c("div", { staticClass: "mb-3" }, [
-                          _c(
-                            "label",
-                            {
-                              staticClass: "form-label",
-                              attrs: { for: "fatherParent" }
-                            },
-                            [_vm._v("Father Plant")]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "select",
-                            {
-                              directives: [
-                                {
-                                  name: "model",
-                                  rawName: "v-model",
-                                  value: _vm.form.father_plant_id,
-                                  expression: "form.father_plant_id"
-                                }
-                              ],
-                              staticClass: "form-select",
-                              attrs: {
-                                id: "fatherParent",
-                                size: "5",
-                                "aria-label": "size 5 select example"
+                        _c(
+                          "div",
+                          { staticClass: "mb-3" },
+                          [
+                            _c(
+                              "label",
+                              {
+                                staticClass: "form-label",
+                                attrs: { for: "fatherParent" }
                               },
-                              on: {
-                                change: function($event) {
-                                  var $$selectedVal = Array.prototype.filter
-                                    .call($event.target.options, function(o) {
-                                      return o.selected
-                                    })
-                                    .map(function(o) {
-                                      var val =
-                                        "_value" in o ? o._value : o.value
-                                      return val
-                                    })
-                                  _vm.$set(
-                                    _vm.form,
-                                    "father_plant_id",
-                                    $event.target.multiple
-                                      ? $$selectedVal
-                                      : $$selectedVal[0]
-                                  )
-                                }
-                              }
-                            },
-                            _vm._l(_vm.formOptions.plants, function(
-                              plant,
-                              index
+                              [_vm._v("Father Plant")]
+                            ),
+                            _vm._v(" "),
+                            _vm._l(_vm.error.form.father_plant_id, function(
+                              message
                             ) {
                               return _c(
-                                "option",
-                                { domProps: { value: plant.id } },
-                                [_vm._v(_vm._s(plant.name))]
+                                "span",
+                                {
+                                  staticClass: "text-danger form-text float-end"
+                                },
+                                [_vm._v(_vm._s(message))]
                               )
                             }),
-                            0
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "div",
-                            {
-                              staticClass: "form-text",
-                              attrs: { id: "fatherParentHelp" }
-                            },
-                            [_vm._v("Which plant did the pollination?")]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "label",
-                            {
-                              staticClass: "form-label",
-                              attrs: { for: "motherParent" }
-                            },
-                            [_vm._v("Mother Plant")]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "select",
-                            {
-                              directives: [
-                                {
-                                  name: "model",
-                                  rawName: "v-model",
-                                  value: _vm.form.mother_plant_id,
-                                  expression: "form.mother_plant_id"
+                            _vm._v(" "),
+                            _c(
+                              "select",
+                              {
+                                directives: [
+                                  {
+                                    name: "model",
+                                    rawName: "v-model",
+                                    value: _vm.form.father_plant_id,
+                                    expression: "form.father_plant_id"
+                                  }
+                                ],
+                                staticClass: "form-select",
+                                attrs: {
+                                  id: "fatherParent",
+                                  size: "5",
+                                  "aria-label": "size 5 select example"
+                                },
+                                on: {
+                                  change: function($event) {
+                                    var $$selectedVal = Array.prototype.filter
+                                      .call($event.target.options, function(o) {
+                                        return o.selected
+                                      })
+                                      .map(function(o) {
+                                        var val =
+                                          "_value" in o ? o._value : o.value
+                                        return val
+                                      })
+                                    _vm.$set(
+                                      _vm.form,
+                                      "father_plant_id",
+                                      $event.target.multiple
+                                        ? $$selectedVal
+                                        : $$selectedVal[0]
+                                    )
+                                  }
                                 }
-                              ],
-                              staticClass: "form-select",
-                              attrs: {
-                                id: "motherParent",
-                                size: "5",
-                                "aria-label": "size 5 select example"
                               },
-                              on: {
-                                change: function($event) {
-                                  var $$selectedVal = Array.prototype.filter
-                                    .call($event.target.options, function(o) {
-                                      return o.selected
-                                    })
-                                    .map(function(o) {
-                                      var val =
-                                        "_value" in o ? o._value : o.value
-                                      return val
-                                    })
-                                  _vm.$set(
-                                    _vm.form,
-                                    "mother_plant_id",
-                                    $event.target.multiple
-                                      ? $$selectedVal
-                                      : $$selectedVal[0]
-                                  )
-                                }
-                              }
-                            },
-                            _vm._l(_vm.formOptions.plants, function(
-                              plant,
-                              index
+                              _vm._l(_vm.formOptions.plants, function(
+                                plant,
+                                index
+                              ) {
+                                return _c(
+                                  "option",
+                                  { domProps: { value: plant.id } },
+                                  [_vm._v(_vm._s(plant.name))]
+                                )
+                              }),
+                              0
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "div",
+                              {
+                                staticClass: "form-text",
+                                attrs: { id: "fatherParentHelp" }
+                              },
+                              [_vm._v("Which plant did the pollination?")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "label",
+                              {
+                                staticClass: "form-label",
+                                attrs: { for: "motherParent" }
+                              },
+                              [_vm._v("Mother Plant")]
+                            ),
+                            _vm._v(" "),
+                            _vm._l(_vm.error.form.mother_plant_id, function(
+                              message
                             ) {
                               return _c(
-                                "option",
-                                { domProps: { value: plant.id } },
-                                [_vm._v(_vm._s(plant.name))]
+                                "span",
+                                {
+                                  staticClass: "text-danger form-text float-end"
+                                },
+                                [_vm._v(_vm._s(message))]
                               )
                             }),
-                            0
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "div",
-                            {
-                              staticClass: "form-text",
-                              attrs: { id: "motherParentHelp" }
-                            },
-                            [_vm._v("Which plant did the seed grow on?")]
-                          )
-                        ])
+                            _vm._v(" "),
+                            _c(
+                              "select",
+                              {
+                                directives: [
+                                  {
+                                    name: "model",
+                                    rawName: "v-model",
+                                    value: _vm.form.mother_plant_id,
+                                    expression: "form.mother_plant_id"
+                                  }
+                                ],
+                                staticClass: "form-select",
+                                attrs: {
+                                  id: "motherParent",
+                                  size: "5",
+                                  "aria-label": "size 5 select example"
+                                },
+                                on: {
+                                  change: function($event) {
+                                    var $$selectedVal = Array.prototype.filter
+                                      .call($event.target.options, function(o) {
+                                        return o.selected
+                                      })
+                                      .map(function(o) {
+                                        var val =
+                                          "_value" in o ? o._value : o.value
+                                        return val
+                                      })
+                                    _vm.$set(
+                                      _vm.form,
+                                      "mother_plant_id",
+                                      $event.target.multiple
+                                        ? $$selectedVal
+                                        : $$selectedVal[0]
+                                    )
+                                  }
+                                }
+                              },
+                              _vm._l(_vm.formOptions.plants, function(
+                                plant,
+                                index
+                              ) {
+                                return _c(
+                                  "option",
+                                  { domProps: { value: plant.id } },
+                                  [_vm._v(_vm._s(plant.name))]
+                                )
+                              }),
+                              0
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "div",
+                              {
+                                staticClass: "form-text",
+                                attrs: { id: "motherParentHelp" }
+                              },
+                              [_vm._v("Which plant did the seed grow on?")]
+                            )
+                          ],
+                          2
+                        )
                       ])
                     : _vm._e(),
                   _vm._v(" "),
                   _vm.form.crossBreedingInfo === "crossChild"
                     ? _c("div", { staticClass: "crossChild" }, [
-                        _c("div", { staticClass: "mb-3" }, [
-                          _c(
-                            "label",
-                            {
-                              staticClass: "form-label",
-                              attrs: { for: "parent" }
-                            },
-                            [_vm._v("Parent Plant")]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "select",
-                            {
-                              directives: [
-                                {
-                                  name: "model",
-                                  rawName: "v-model",
-                                  value: _vm.form.parent_plant_id,
-                                  expression: "form.parent_plant_id"
-                                }
-                              ],
-                              staticClass: "form-select",
-                              attrs: {
-                                id: "parent",
-                                size: "5",
-                                "aria-label": "size 5 select"
+                        _c(
+                          "div",
+                          { staticClass: "mb-3" },
+                          [
+                            _c(
+                              "label",
+                              {
+                                staticClass: "form-label",
+                                attrs: { for: "parent" }
                               },
-                              on: {
-                                change: function($event) {
-                                  var $$selectedVal = Array.prototype.filter
-                                    .call($event.target.options, function(o) {
-                                      return o.selected
-                                    })
-                                    .map(function(o) {
-                                      var val =
-                                        "_value" in o ? o._value : o.value
-                                      return val
-                                    })
-                                  _vm.$set(
-                                    _vm.form,
-                                    "parent_plant_id",
-                                    $event.target.multiple
-                                      ? $$selectedVal
-                                      : $$selectedVal[0]
-                                  )
-                                }
-                              }
-                            },
-                            _vm._l(_vm.formOptions.plants, function(
-                              plant,
-                              index
+                              [_vm._v("Parent Plant")]
+                            ),
+                            _vm._v(" "),
+                            _vm._l(_vm.error.form.parent_plant_id, function(
+                              message
                             ) {
                               return _c(
-                                "option",
-                                { domProps: { value: plant.id } },
-                                [_vm._v(_vm._s(plant.name))]
+                                "span",
+                                {
+                                  staticClass: "text-danger form-text float-end"
+                                },
+                                [_vm._v(_vm._s(message))]
                               )
                             }),
-                            0
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "div",
-                            {
-                              staticClass: "form-text",
-                              attrs: { id: "parentHelp" }
-                            },
-                            [
-                              _vm._v(
-                                "Which plant is this a pure descendant from?"
-                              )
-                            ]
-                          )
-                        ])
+                            _vm._v(" "),
+                            _c(
+                              "select",
+                              {
+                                directives: [
+                                  {
+                                    name: "model",
+                                    rawName: "v-model",
+                                    value: _vm.form.parent_plant_id,
+                                    expression: "form.parent_plant_id"
+                                  }
+                                ],
+                                staticClass: "form-select",
+                                attrs: {
+                                  id: "parent",
+                                  size: "5",
+                                  "aria-label": "size 5 select"
+                                },
+                                on: {
+                                  change: function($event) {
+                                    var $$selectedVal = Array.prototype.filter
+                                      .call($event.target.options, function(o) {
+                                        return o.selected
+                                      })
+                                      .map(function(o) {
+                                        var val =
+                                          "_value" in o ? o._value : o.value
+                                        return val
+                                      })
+                                    _vm.$set(
+                                      _vm.form,
+                                      "parent_plant_id",
+                                      $event.target.multiple
+                                        ? $$selectedVal
+                                        : $$selectedVal[0]
+                                    )
+                                  }
+                                }
+                              },
+                              _vm._l(_vm.formOptions.plants, function(
+                                plant,
+                                index
+                              ) {
+                                return _c(
+                                  "option",
+                                  { domProps: { value: plant.id } },
+                                  [_vm._v(_vm._s(plant.name))]
+                                )
+                              }),
+                              0
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "div",
+                              {
+                                staticClass: "form-text",
+                                attrs: { id: "parentHelp" }
+                              },
+                              [
+                                _vm._v(
+                                  "Which plant is this a pure descendant from?"
+                                )
+                              ]
+                            )
+                          ],
+                          2
+                        )
                       ])
                     : _vm._e(),
                   _vm._v(" "),
                   _vm.form.crossBreedingInfo === "nonCross"
                     ? _c("div", { staticClass: "nonCross" }, [
-                        _c("div", { staticClass: "mb-3" }, [
-                          _c(
-                            "label",
-                            {
-                              staticClass: "form-label",
-                              attrs: { for: "species" }
-                            },
-                            [_vm._v("Species")]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "select",
-                            {
-                              directives: [
-                                {
-                                  name: "model",
-                                  rawName: "v-model",
-                                  value: _vm.species_id,
-                                  expression: "species_id"
-                                }
-                              ],
-                              staticClass: "form-select",
-                              attrs: { id: "species", "aria-label": "select" },
-                              on: {
-                                change: function($event) {
-                                  var $$selectedVal = Array.prototype.filter
-                                    .call($event.target.options, function(o) {
-                                      return o.selected
-                                    })
-                                    .map(function(o) {
-                                      var val =
-                                        "_value" in o ? o._value : o.value
-                                      return val
-                                    })
-                                  _vm.species_id = $event.target.multiple
-                                    ? $$selectedVal
-                                    : $$selectedVal[0]
-                                }
-                              }
-                            },
-                            _vm._l(_vm.formOptions.species, function(
-                              species,
-                              index
+                        _c(
+                          "div",
+                          { staticClass: "mb-3" },
+                          [
+                            _c(
+                              "label",
+                              {
+                                staticClass: "form-label",
+                                attrs: { for: "species" }
+                              },
+                              [_vm._v("Species")]
+                            ),
+                            _vm._v(" "),
+                            _vm._l(_vm.error.form.species_id, function(
+                              message
                             ) {
                               return _c(
-                                "option",
-                                { domProps: { value: index } },
-                                [_vm._v(_vm._s(species))]
+                                "span",
+                                {
+                                  staticClass: "text-danger form-text float-end"
+                                },
+                                [_vm._v(_vm._s(message))]
                               )
                             }),
-                            0
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "div",
-                            {
-                              staticClass: "form-text",
-                              attrs: { id: "speciesHelp" }
-                            },
-                            [_vm._v("What is the species of this plant?")]
-                          ),
-                          _vm._v(" "),
-                          _vm._m(0)
-                        ]),
-                        _vm._v(" "),
-                        _c("div", { staticClass: "mb-3" }, [
-                          _c(
-                            "label",
-                            {
-                              staticClass: "form-label",
-                              attrs: { for: "variety" }
-                            },
-                            [_vm._v("Variety")]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "select",
-                            {
-                              directives: [
-                                {
-                                  name: "model",
-                                  rawName: "v-model",
-                                  value: _vm.form.variety_id,
-                                  expression: "form.variety_id"
-                                }
-                              ],
-                              staticClass: "form-select",
-                              attrs: { id: "variety", "aria-label": "select" },
-                              on: {
-                                change: function($event) {
-                                  var $$selectedVal = Array.prototype.filter
-                                    .call($event.target.options, function(o) {
-                                      return o.selected
-                                    })
-                                    .map(function(o) {
-                                      var val =
-                                        "_value" in o ? o._value : o.value
-                                      return val
-                                    })
-                                  _vm.$set(
-                                    _vm.form,
-                                    "variety_id",
-                                    $event.target.multiple
+                            _vm._v(" "),
+                            _c(
+                              "select",
+                              {
+                                directives: [
+                                  {
+                                    name: "model",
+                                    rawName: "v-model",
+                                    value: _vm.species_id,
+                                    expression: "species_id"
+                                  }
+                                ],
+                                staticClass: "form-select",
+                                attrs: {
+                                  id: "species",
+                                  "aria-label": "select"
+                                },
+                                on: {
+                                  change: function($event) {
+                                    var $$selectedVal = Array.prototype.filter
+                                      .call($event.target.options, function(o) {
+                                        return o.selected
+                                      })
+                                      .map(function(o) {
+                                        var val =
+                                          "_value" in o ? o._value : o.value
+                                        return val
+                                      })
+                                    _vm.species_id = $event.target.multiple
                                       ? $$selectedVal
                                       : $$selectedVal[0]
-                                  )
+                                  }
                                 }
-                              }
-                            },
-                            _vm._l(_vm.varieties, function(variety, index) {
+                              },
+                              _vm._l(_vm.formOptions.species, function(
+                                species,
+                                index
+                              ) {
+                                return _c(
+                                  "option",
+                                  { domProps: { value: index } },
+                                  [_vm._v(_vm._s(species))]
+                                )
+                              }),
+                              0
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "div",
+                              {
+                                staticClass: "form-text",
+                                attrs: { id: "speciesHelp" }
+                              },
+                              [_vm._v("What is the species of this plant?")]
+                            ),
+                            _vm._v(" "),
+                            _vm._m(0)
+                          ],
+                          2
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "div",
+                          { staticClass: "mb-3" },
+                          [
+                            _c(
+                              "label",
+                              {
+                                staticClass: "form-label",
+                                attrs: { for: "variety" }
+                              },
+                              [_vm._v("Variety")]
+                            ),
+                            _vm._v(" "),
+                            _vm._l(_vm.error.form.variety_id, function(
+                              message
+                            ) {
                               return _c(
-                                "option",
-                                { domProps: { value: variety.id } },
-                                [_vm._v(_vm._s(variety.name))]
+                                "span",
+                                {
+                                  staticClass: "text-danger form-text float-end"
+                                },
+                                [_vm._v(_vm._s(message))]
                               )
                             }),
-                            0
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "div",
-                            {
-                              staticClass: "form-text",
-                              attrs: { id: "varietyHelp" }
-                            },
-                            [_vm._v("And which variety is it?")]
-                          ),
-                          _vm._v(" "),
-                          _vm._m(1)
-                        ])
+                            _vm._v(" "),
+                            _c(
+                              "select",
+                              {
+                                directives: [
+                                  {
+                                    name: "model",
+                                    rawName: "v-model",
+                                    value: _vm.form.variety_id,
+                                    expression: "form.variety_id"
+                                  }
+                                ],
+                                staticClass: "form-select",
+                                attrs: {
+                                  id: "variety",
+                                  "aria-label": "select"
+                                },
+                                on: {
+                                  change: function($event) {
+                                    var $$selectedVal = Array.prototype.filter
+                                      .call($event.target.options, function(o) {
+                                        return o.selected
+                                      })
+                                      .map(function(o) {
+                                        var val =
+                                          "_value" in o ? o._value : o.value
+                                        return val
+                                      })
+                                    _vm.$set(
+                                      _vm.form,
+                                      "variety_id",
+                                      $event.target.multiple
+                                        ? $$selectedVal
+                                        : $$selectedVal[0]
+                                    )
+                                  }
+                                }
+                              },
+                              _vm._l(_vm.varieties, function(variety, index) {
+                                return _c(
+                                  "option",
+                                  { domProps: { value: variety.id } },
+                                  [_vm._v(_vm._s(variety.name))]
+                                )
+                              }),
+                              0
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "div",
+                              {
+                                staticClass: "form-text",
+                                attrs: { id: "varietyHelp" }
+                              },
+                              [_vm._v("And which variety is it?")]
+                            ),
+                            _vm._v(" "),
+                            _vm._m(1)
+                          ],
+                          2
+                        )
                       ])
                     : _vm._e()
                 ])

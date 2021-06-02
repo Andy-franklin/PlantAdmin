@@ -11,12 +11,14 @@
                     <!-- Basic Info -->
                     <div class="mb-3">
                         <label for="nameInput" class="form-label">Name</label>
+                        <span class="text-danger form-text float-end" v-for="message in error.form.name">{{ message }}</span>
                         <input type="text" class="form-control" id="nameInput" aria-describedby="nameHelp" v-model="form.name">
                         <div id="nameHelp" class="form-text">A friendly name for this plant.</div>
                     </div>
 
                     <div class="mb-3">
                         <label for="status" class="form-label">Status</label>
+                        <span class="text-danger form-text float-end" v-for="message in error.form.status_id">{{ message }}</span>
                         <select id="status" class="form-select" aria-label="select example" v-model="form.status_id">
                             <option v-for="(status, index) in formOptions.statuses" :value="index">{{ status }}</option>
                         </select>
@@ -25,12 +27,14 @@
 
                     <div class="mb-3" v-show="undefined !== formOptions.statuses && formOptions.statuses[form.status_id] === 'Potted'">
                         <label for="potSizeInput" class="form-label">Pot Size</label>
+                        <span class="text-danger form-text float-end" v-for="message in error.form.pot_size">{{ message }}</span>
                         <input type="number" class="form-control" id="potSizeInput" aria-describedby="potSizeHelp" v-model="form.pot_size">
                         <div id="potSizeHelp" class="form-text">How big is that pot in inches?</div>
                     </div>
 
                     <div class="mb-3">
                         <label for="quantity" class="form-label">Quantity</label>
+                        <span class="text-danger form-text float-end" v-for="message in error.form.quantity">{{ message }}</span>
                         <input type="number" class="form-control" id="quantity" aria-describedby="quantityHelp" v-model="form.quantity">
                         <div id="quantityHelp" class="form-text">How many do you have? (How many is too many?)</div>
                     </div>
@@ -66,6 +70,7 @@
                             <div class="mb-3">
                                 <!-- Generation -->
                                 <label for="filialGeneration" class="form-label">Filial Generation</label>
+                                <span class="text-danger form-text float-end" v-for="message in error.form.filial_generation">{{ message }}</span>
                                 <input type="number" class="form-control" id="filialGeneration" v-model="form.filial_generation">
                                 <div id="filialGenerationHelp" class="form-text">Which generation is this plant?</div>
                             </div>
@@ -74,12 +79,14 @@
                                 <div class="mb-3">
                                     <!-- Relationships -->
                                     <label for="fatherParent" class="form-label">Father Plant</label>
+                                    <span class="text-danger form-text float-end" v-for="message in error.form.father_plant_id">{{ message }}</span>
                                     <select id="fatherParent" class="form-select" size="5" aria-label="size 5 select example" v-model="form.father_plant_id">
                                         <option v-for="(plant, index) in formOptions.plants" :value="plant.id">{{ plant.name }}</option>
                                     </select>
                                     <div id="fatherParentHelp" class="form-text">Which plant did the pollination?</div>
 
                                     <label for="motherParent" class="form-label">Mother Plant</label>
+                                    <span class="text-danger form-text float-end" v-for="message in error.form.mother_plant_id">{{ message }}</span>
                                     <select id="motherParent" class="form-select" size="5" aria-label="size 5 select example" v-model="form.mother_plant_id">
                                         <option v-for="(plant, index) in formOptions.plants" :value="plant.id">{{ plant.name }}</option>
                                     </select>
@@ -90,6 +97,7 @@
                             <div class="crossChild" v-if="form.crossBreedingInfo === 'crossChild'">
                                 <div class="mb-3">
                                     <label for="parent" class="form-label">Parent Plant</label>
+                                    <span class="text-danger form-text float-end" v-for="message in error.form.parent_plant_id">{{ message }}</span>
                                     <select id="parent" class="form-select" size="5" aria-label="size 5 select" v-model="form.parent_plant_id">
                                         <option v-for="(plant, index) in formOptions.plants" :value="plant.id">{{ plant.name }}</option>
                                     </select>
@@ -100,6 +108,7 @@
                             <div class="nonCross" v-if="form.crossBreedingInfo === 'nonCross'">
                                 <div class="mb-3">
                                     <label for="species" class="form-label">Species</label>
+                                    <span class="text-danger form-text float-end" v-for="message in error.form.species_id">{{ message }}</span>
                                     <select id="species" class="form-select" aria-label="select" v-model="species_id">
                                         <option v-for="(species, index) in formOptions.species" :value="index">{{ species }}</option>
                                     </select>
@@ -112,6 +121,7 @@
 
                                 <div class="mb-3">
                                     <label for="variety" class="form-label">Variety</label>
+                                    <span class="text-danger form-text float-end" v-for="message in error.form.variety_id">{{ message }}</span>
                                     <select id="variety" class="form-select" aria-label="select" v-model="form.variety_id">
                                         <option v-for="(variety, index) in varieties" :value="variety.id">{{ variety.name }}</option>
                                     </select>

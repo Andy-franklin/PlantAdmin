@@ -34,12 +34,28 @@ class PlantStoreRequest extends FormRequest
             'status_id' => ['required', 'exists:statuses,id'],
             'variety_id' => ['required', 'exists:varieties,id'],
             'filial_generation' => ['required', 'integer', 'gte:0'],
-            'father_parent' => ['exists:plants,id'],
-            'mother_parent' => ['exists:plants,id'],
-            'parent_plant' => ['exists:plants,id'],
-            'quantity' => ['integer'],
-            'pot_size' => ['integer'],
+            'crossBreedingInfo' => ['required'],
+            'father_parent_id' => ['nullable', 'exists:plants,id'],
+            'mother_parent_id' => ['nullable', 'exists:plants,id'],
+            'parent_plant_id' => ['nullable', 'exists:plants,id'],
+            'quantity' => ['nullable', 'integer'],
+            'pot_size' => ['nullable', 'integer'],
         ];
+    }
+
+    protected function getValidatorInstance()
+    {
+        $validator = parent::getValidatorInstance();
+
+        $validator->sometimes(['father_parent_id', 'mother_parent_id'], 'required', static function ($input) {
+            return $input->crossBreedingInfo === 'newCross';
+        });
+
+        $validator->sometimes(['parent_plant_id'], 'required', static function ($input) {
+            return $input->crossBreedingInfo === 'crossChild';
+        });
+
+        return $validator;
     }
 
     public function store(): array
@@ -54,11 +70,15 @@ class PlantStoreRequest extends FormRequest
         $status = Status::findOrFail($validated['status_id']);
 
         $fatherPlant = $motherPlant = null;
-        if (isset($validated['father_parent'])) {
-            $fatherPlant = Plant::findOrFail($validated['father_parent']);
+        if ($validated['crossBreedingInfo'] === 'crossChild') {
+            $validated['father_parent_id'] = $validated['mother_parent_id'] = $validated['parent_plant_id'];
         }
-        if (isset($validated['mother_parent'])) {
-            $motherPlant = Plant::findOrFail($validated['mother_parent']);
+
+        if (isset($validated['father_parent_id'])) {
+            $fatherPlant = Plant::findOrFail($validated['father_parent_id']);
+        }
+        if (isset($validated['father_parent_id'])) {
+            $motherPlant = Plant::findOrFail($validated['mother_parent_id']);
         }
 
         for ($i = 0; $i < $count; $i++) {
