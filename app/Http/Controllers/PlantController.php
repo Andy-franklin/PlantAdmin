@@ -33,7 +33,7 @@ class PlantController extends Controller
             'statuses' => Status::query()->pluck('name', 'id'),
             'plants' => Plant::query()->select(['id', 'name', 'created_at'])->get(),
             'species' => Species::query()->pluck('name', 'id'),
-            'varieties' => Variety::query()->pluck('name', 'id'),
+            'varieties' => Variety::query()->select(['name', 'id', 'species_id'])->get(),
         ], JsonResponse::HTTP_OK);
     }
 

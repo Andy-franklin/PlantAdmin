@@ -36,7 +36,9 @@ class PlantStoreRequest extends FormRequest
             'filial_generation' => ['required', 'integer', 'gte:0'],
             'father_parent' => ['exists:plants,id'],
             'mother_parent' => ['exists:plants,id'],
-            'quantity' => ['integer']
+            'parent_plant' => ['exists:plants,id'],
+            'quantity' => ['integer'],
+            'pot_size' => ['integer'],
         ];
     }
 

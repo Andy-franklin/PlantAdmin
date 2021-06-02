@@ -32,7 +32,7 @@ class PlantQRCode implements QRCode
 
     public function getSize()
     {
-        return 250;
+        return 200;
     }
 
     public function getMargin()
@@ -42,6 +42,6 @@ class PlantQRCode implements QRCode
 
     public function getFontSize()
     {
-        return 10;
+        return 6;
     }
 }
