@@ -13,4 +13,14 @@ class Variety extends Model
     {
         return $this->hasMany(Plant::class);
     }
+
+    public function species()
+    {
+        return $this->belongsTo(Species::class);
+    }
+
+    public function images()
+    {
+        return $this->morphMany(Image::class, 'imageable');
+    }
 }

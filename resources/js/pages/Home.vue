@@ -1,20 +1,17 @@
 <template>
     <div class="container mt-5">
-        <div class="row justify-content-center">
-            <div class="col-md-8">
-                <div class="card">
-                    <div class="card-header"></div>
-                    <div class="card-body">
-
-                    </div>
-                </div>
-            </div>
-        </div>
+        <PlantFamilyTree></PlantFamilyTree>
     </div>
 </template>
 
 <script>
+import PlantFamilyTree from "../components/PlantFamilyTree";
 export default {
+    components: {PlantFamilyTree},
+    data() {
+        return {
 
+        }
+    }
 }
 </script>

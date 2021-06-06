@@ -27,8 +27,6 @@ class QRCodeHelper
             ->size($code->getSize())
             ->margin($code->getMargin())
             ->roundBlockSizeMode(new RoundBlockSizeModeMargin())
-            //Todo: It might be nice to have a logo
-            //->logoPath(__DIR__.'/assets/symfony.png')
             ->labelText($code->getLabel())
             ->labelFont(new NotoSans($code->getFontSize()))
             ->labelAlignment(new LabelAlignmentCenter())

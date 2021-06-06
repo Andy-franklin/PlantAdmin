@@ -68,6 +68,13 @@
                             </div>
 
                             <div class="mb-3">
+                                <label for="images" class="form-label">Source Image</label><br/>
+                                <span class="text-danger form-text float-end" v-for="message in error.form.images">{{ message }}</span>
+                                <input id="images" ref="images" name="images" type="file" accept="image/*" multiple @change="onFileChange"/>
+                                <div id="imagesHelp" class="form-text">Anything worth photographing? The seed packet?</div>
+                            </div>
+
+                            <div class="mb-3">
                                 <!-- Generation -->
                                 <label for="filialGeneration" class="form-label">Filial Generation</label>
                                 <span class="text-danger form-text float-end" v-for="message in error.form.filial_generation">{{ message }}</span>
@@ -181,7 +188,8 @@ export default {
                 mother_plant_id: null,
                 father_plant_id: null,
                 crossBreedingInfo: 'nonCross',
-                quantity: 1
+                quantity: 1,
+                images: []
             },
             formOptions: {}
         }
@@ -198,17 +206,49 @@ export default {
             })
     },
     methods : {
+        onFileChange(e) {
+            debugger;
+            this.form.images = this.$refs.images.files;
+        },
         submit : function(){
             this.loading = true;
-            axios.post('/api/plant/create', this.form)
+
+            let bodyFormData = new FormData();
+            bodyFormData.append('name', this.form.name);
+            bodyFormData.append('status_id', this.form.status_id);
+            bodyFormData.append('crossBreedingInfo', this.form.crossBreedingInfo);
+            bodyFormData.append('filial_generation', this.form.filial_generation);
+            bodyFormData.append('quantity', this.form.quantity);
+
+            if (this.form.images.length > 0) {
+                for (let i = 0; i < this.form.images.length; i++) {
+                    bodyFormData.append('images[' + i + ']', this.form.images[i])
+                }
+            }
+
+            if (this.formOptions.statuses[this.form.status_id] === 'Potted') {
+                bodyFormData.append('pot_size', this.form.pot_size);
+            }
+
+            if (this.form.crossBreedingInfo === 'crossChild') {
+                bodyFormData.append('parent_plant_id', this.form.parent_plant_id);
+            } else if (this.form.crossBreedingInfo === 'nonCross') {
+                bodyFormData.append('variety_id', this.form.variety_id);
+                bodyFormData.append('species_id', this.form.species_id);
+            } else if (this.form.crossBreedingInfo === 'newCross') {
+                bodyFormData.append('mother_plant_id', this.form.mother_plant_id);
+                bodyFormData.append('father_plant_id', this.form.father_plant_id);
+            }
+
+            axios.post('/api/plant/create', bodyFormData, {
+                headers: { "Content-Type": "multipart/form-data" }
+            })
                 .then((response) => {
                     this.loading = false;
 
                     router.push({name: 'home'})
-
                 })
                 .catch((error) => {
-                    debugger;
                     this.loading = false;
                     this.error.active = true;
                     this.error.message = error.response.data.message;

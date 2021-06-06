@@ -20,7 +20,13 @@ class PlantQRCode implements QRCode
     {
         $createdAt = $this->plant->created_at ?? now();
 
-        return $this->plant->variety->name .
+        if ($this->plant->variety === null) {
+            $variety = $this->plant->getCrossVarietyLabel();
+        } else {
+            $variety = $this->plant->variety->name;
+        }
+
+        return $variety .
             ' : F' . $this->plant->filial_generation .
             ' : (' . $createdAt->format('Y-m-d') . ')';
     }

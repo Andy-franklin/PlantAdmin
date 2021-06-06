@@ -21,13 +21,12 @@ class CreatePlantsTable extends Migration
 
             $table->string('name');
             $table->foreignId('status_id')->constrained('statuses');
-            $table->foreignId('variety_id')->constrained('varieties');
-
 
             $table->integer('filial_generation')->default(0);
 
             $table->foreignId('father_parent')->nullable()->constrained('plants', 'id');
             $table->foreignId('mother_parent')->nullable()->constrained('plants', 'id');
+            $table->foreignId('variety_id')->nullable()->constrained('varieties');
 
             $table->integer('pot_size')->nullable();
 

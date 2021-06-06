@@ -21,4 +21,5 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::group([], function () {
     Route::options('/plant/create', 'App\Http\Controllers\PlantController@create')->name('plant.create.form');
     Route::post('/plant/create', 'App\Http\Controllers\PlantController@store')->name('plant.create.store');
+    Route::get('/plant/{plant}/family-tree', 'App\Http\Controllers\PlantController@familyTree')->name('plant.family-tree');
 });

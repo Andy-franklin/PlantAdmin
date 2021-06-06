@@ -8,7 +8,6 @@ use App\Models\Species;
 use App\Models\Status;
 use App\Models\Variety;
 use Illuminate\Http\JsonResponse;
-use Illuminate\Http\Request;
 
 class PlantController extends Controller
 {
@@ -51,48 +50,10 @@ class PlantController extends Controller
         return new JsonResponse(null, JsonResponse::HTTP_CREATED);
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\plant  $plant
-     * @return \Illuminate\Http\Response
-     */
-    public function show(plant $plant)
+    public function familyTree(Plant $plant): JsonResponse
     {
-        //
-    }
+        $plants = $plant->familyTreeParents($plant);
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\plant  $plant
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(plant $plant)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\plant  $plant
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, plant $plant)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\plant  $plant
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(plant $plant)
-    {
-        //
+        return new JsonResponse($plants, JsonResponse::HTTP_OK);
     }
 }

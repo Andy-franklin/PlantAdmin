@@ -25,6 +25,9 @@
         "vue-template-compiler": "^2.6.12"
     },
     "dependencies": {
+        "bootstrap-icons": "^1.5.0",
+        "d3": "^6.7.0",
+        "d3-dtree": "^2.4.1",
         "vue-router": "^3.5.1"
     }
 }

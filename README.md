@@ -25,6 +25,10 @@ Production: `npm run prod`
 
 Create a mysql database and set this in `.env`
 
+##### File uploads
+
+Enable user uploaded images to be shown using `php artisan storage:link`
+
 ### Planned Features
 
 - [ ] New plant form

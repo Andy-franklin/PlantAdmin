@@ -32,7 +32,7 @@ class PlantStoreRequest extends FormRequest
         return [
             'name' => ['required', 'string'],
             'status_id' => ['required', 'exists:statuses,id'],
-            'variety_id' => ['required', 'exists:varieties,id'],
+            'variety_id' => ['exists:varieties,id'],
             'filial_generation' => ['required', 'integer', 'gte:0'],
             'crossBreedingInfo' => ['required'],
             'father_parent_id' => ['nullable', 'exists:plants,id'],
@@ -40,6 +40,7 @@ class PlantStoreRequest extends FormRequest
             'parent_plant_id' => ['nullable', 'exists:plants,id'],
             'quantity' => ['nullable', 'integer'],
             'pot_size' => ['nullable', 'integer'],
+            'images.*' => ['max:20000', 'mimes:jpg,jpeg,png,bmp']
         ];
     }
 
@@ -55,6 +56,10 @@ class PlantStoreRequest extends FormRequest
             return $input->crossBreedingInfo === 'crossChild';
         });
 
+        $validator->sometimes(['variety_id'], 'required', static function ($input) {
+            return $input->crossBreedingInfo === 'nonCross';
+        });
+
         return $validator;
     }
 
@@ -66,17 +71,23 @@ class PlantStoreRequest extends FormRequest
 
         $plants = [];
 
-        $variety = Variety::findOrFail($validated['variety_id']);
         $status = Status::findOrFail($validated['status_id']);
 
-        $fatherPlant = $motherPlant = null;
+        $fatherPlant = $motherPlant = $variety = null;
         if ($validated['crossBreedingInfo'] === 'crossChild') {
             $validated['father_parent_id'] = $validated['mother_parent_id'] = $validated['parent_plant_id'];
+
+            /** @var Plant $parentPlant */
+            $parentPlant = Plant::findOrFail($validated['parent_plant_id']);
+            $variety = $parentPlant->variety;
+        } elseif ($validated['crossBreedingInfo'] === 'nonCross') {
+            $variety = Variety::findOrFail($validated['variety_id']);
         }
 
         if (isset($validated['father_parent_id'])) {
             $fatherPlant = Plant::findOrFail($validated['father_parent_id']);
         }
+
         if (isset($validated['father_parent_id'])) {
             $motherPlant = Plant::findOrFail($validated['mother_parent_id']);
         }
@@ -89,7 +100,9 @@ class PlantStoreRequest extends FormRequest
                 'filial_generation' => $validated['filial_generation'],
             ]);
 
-            $plant->variety()->associate($variety);
+            if (null !== $variety) {
+                $plant->variety()->associate($variety);
+            }
             $plant->status()->associate($status);
 
             if ($fatherPlant !== null) {
@@ -102,7 +115,21 @@ class PlantStoreRequest extends FormRequest
 
             $plant->qr_image = QRCodeHelper::generateQRCode(new PlantQRCode($plant));
 
+            $paths = [];
+            if (! empty($validated['images'])) {
+                foreach ($this->file('images') as $image) {
+                    $paths[] = $image->store('uploads');
+
+                }
+            }
+
             $plant->save();
+
+            foreach ($paths as $path) {
+                $plant->images()->create([
+                    'url' => $path
+                ]);
+            }
 
             $plants[] = $plant;
         }
